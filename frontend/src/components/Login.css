@@ -1,0 +1,68 @@
+input{
+font-size: 16px;
+padding: 7px;
+border: 1px solid rgb(255, 255, 255);
+border-radius: 5px;
+flex-grow: 1;
+margin: 10px;
+width: 250px;
+background-color: #242424;
+}
+
+input:focus{
+  border-color: #007bff;                /* ขอบเปลี่ยนสีตอน focus */
+  box-shadow: 0 0 6px rgba(0,123,255,0.4); /* เพิ่มเงา */
+}
+
+.container {
+    max-width: 500px;
+    margin: 70px auto;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* ✅ มีเว้นวรรค */
+    display: flex;
+    justify-content: center;   /* จัดกึ่งกลางแนวนอน */
+    align-items: center;       /* จัดกึ่งกลางแนวตั้ง */
+    text-align: center;
+
+}
+
+.bigbox {
+
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+.bt{
+width: 200px;
+background-color: rgb(15, 70, 179);
+border-radius: 5px;
+font-size: 18px;
+margin: 10px;
+padding: 7px;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.2s ease;
+box-shadow: 0 4px 6px rgba(0,0,0,0.2);}
+
+.bt:hover{
+background-color: rgb(3, 76, 139);
+transform: translateY(-2px);   /* เด้งขึ้นนิด ๆ */
+}
+
+.a1{
+    color: #5c96d4;
+    text-decoration: none; 
+    transition: color 0.3s ease;
+}
+.a1:hover{
+
+    color: #007bff;
+}
+
+.hr1{
+
+color: black;
+
+}
+
