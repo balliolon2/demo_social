@@ -11,6 +11,12 @@
   - NodeJS
   - ORM: Prisma
 
+# ER diagram
+- ![ER Diagram](/image/ER_Diagram.png)
+
+# Showcase
+- 
+
 # Setup Database
 - Use 'Docker'
 - Create database container via MySQL
