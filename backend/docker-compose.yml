@@ -1,0 +1,10 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: some-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ballza123
+      MYSQL_DATABASE: social
+      MYSQL_ROOT_HOST: "%"
+    ports:
+      - "3306:3306"

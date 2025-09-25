@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model replies {
+  replie_id     Int       @id @default(autoincrement())
+  thread_id     Int
+  user_id       Int
+  parent_id     Int?
+  body          String    @db.MediumText
+  is_deleted    Boolean   @default(false)
+  created_at    DateTime  @default(now()) @db.DateTime(0)
+  updated_at    DateTime? @db.DateTime(0)
+  threads       threads   @relation(fields: [thread_id], references: [thread_id], onDelete: Cascade, onUpdate: NoAction, map: "replies_ibfk_1")
+  users         users     @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction, map: "replies_ibfk_2")
+  replies       replies?  @relation("repliesToreplies", fields: [parent_id], references: [replie_id], onUpdate: NoAction, map: "replies_ibfk_3")
+  other_replies replies[] @relation("repliesToreplies")
+
+  @@index([parent_id], map: "parent_id")
+  @@index([thread_id], map: "thread_id")
+  @@index([user_id], map: "user_id")
+}
+
+model threads {
+  thread_id  Int       @id @default(autoincrement())
+  user_id    Int
+  title      String    @db.VarChar(200)
+  body       String    @db.MediumText
+  is_locked  Boolean   @default(false)
+  is_deleted Boolean   @default(false)
+  created_at DateTime  @default(now()) @db.DateTime(0)
+  updated_at DateTime? @db.DateTime(0)
+  replies    replies[]
+  users      users     @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction, map: "threads_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+model users {
+  user_id       Int        @id @default(autoincrement())
+  username      String     @unique(map: "username") @db.VarChar(32)
+  email         String?    @unique(map: "email") @db.VarChar(255)
+  pass_hash     String     @db.VarChar(255)
+  role          users_role @default(user)
+  created_at    DateTime   @default(now()) @db.DateTime(0)
+  last_login_at DateTime?  @db.DateTime(0)
+  replies       replies[]
+  threads       threads[]
+}
+
+enum users_role {
+  user
+  admin
+}
