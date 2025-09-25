@@ -12,10 +12,13 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:3001/api/auth/login",
+        {
+          username,
+          password,
+        },
+      );
       setMessage(response.data.message);
       // หากเข้าสู่ระบบสำเร็จ ให้เก็บ token และเปลี่ยนเส้นทางไปหน้า Dashboard
       if (response.data.token) {

@@ -1,4 +1,4 @@
-import createError from "../utils/createError.js";
+import { createError } from "../utils/createError.js";
 import prisma from "../config/prisma.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -66,44 +66,5 @@ export const login = async (req, res, next) => {
     });
   } catch (error) {
     next(error);
-  }
-};
-
-export const getThreads = async (req, res, next) => {
-  try {
-    const threads = await prisma.threads.findMany({
-      include: {
-        users: {
-          select: {
-            username: true,
-          },
-        },
-      },
-      orderBy: {
-        created_at: "desc",
-      },
-    });
-    res.json(threads);
-  } catch (err) {
-    next(err);
-  }
-};
-
-export const createThread = async (req, res, next) => {
-  try {
-    const { title, body } = req.body;
-    const { id: userId } = req.user; // Get user id from token
-
-    const newThread = await prisma.threads.create({
-      data: {
-        title,
-        body,
-        user_id: userId,
-      },
-    });
-
-    res.status(201).json(newThread);
-  } catch (err) {
-    next(err);
   }
 };

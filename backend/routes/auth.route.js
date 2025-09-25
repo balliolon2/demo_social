@@ -1,10 +1,5 @@
 import express from "express";
-import {
-  register,
-  login,
-  getThreads,
-  createThread,
-} from "../controllers/auth.controller.js";
+import { register, login } from "../controllers/auth.controller.js";
 import { validate, registerscheema, loginscheema } from "../utils/validate.js";
 import { verifytoken } from "../middleware/verifytoken.js";
 const route = express.Router();
@@ -14,7 +9,5 @@ route.post("/api/auth", verifytoken, (req, res) =>
 );
 route.post("/register", validate(registerscheema), register);
 route.post("/login", validate(loginscheema), login);
-route.get("/threads", verifytoken, getThreads);
-route.post("/threads", verifytoken, createThread);
 
 export default route;

@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Landing from "./components/Landing";
 import NewThread from "./components/NewThread";
+import ThreadPage from "./components/ThreadPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/new-thread" element={<NewThread />} />
+          <Route path="/thread/:id" element={<ThreadPage />} />
         </Routes>
       </div>
     </BrowserRouter>

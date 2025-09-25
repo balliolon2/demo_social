@@ -12,11 +12,12 @@ function Dashboard() {
     const fetchThreads = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:3001/threads", {
+        const response = await axios.get("http://localhost:3001/api/threads", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+        console.log(response.data);
         setThreads(response.data);
       } catch (error) {
         console.error("Error fetching threads:", error);
@@ -52,8 +53,10 @@ function Dashboard() {
         <ul className="thread-list">
           {threads.map((thread) => (
             <li key={thread.thread_id} className="thread-item">
-              <h3>{thread.title}</h3>
-              <p>post by: {thread.users.username}</p>
+              <Link to={`/thread/${thread.thread_id}`}>
+                <h3>{thread.title}</h3>
+                <p>post by: {thread.users.username}</p>
+              </Link>
             </li>
           ))}
         </ul>
