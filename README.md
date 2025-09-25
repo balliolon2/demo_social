@@ -1,4 +1,6 @@
-Demo_Social
+# Demo_Social
+- This is for learning only
+- I delete git ignore for let you can see .env, docker-compose.yml, and other 
 
 # Setup Database
 - Use 'Docker'
