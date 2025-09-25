@@ -2,24 +2,33 @@
 - This is for learning only
 - I delete git ignore for let you can see .env, docker-compose.yml, and other 
 
+# Framework
+- Frontend
+  - React
+- Backend
+  - Container: Docker
+  - Database: MySQL
+  - NodeJS
+  - ORM: Prisma
+
 # Setup Database
 - Use 'Docker'
 - Create database container via MySQL
- - create 'docker-compose.yml' in backend folder
- -
- ```
- services:
-  mysql:
-    image: mysql:8.4
-    container_name: some-mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: <your_root_pass>
-      MYSQL_DATABASE: social
-      MYSQL_ROOT_HOST: "%"
-    ports:
-      - "3306:3306"
- ```
- - run `docker compose up -d`
+  - create 'docker-compose.yml' in backend folder
+  -
+  ```
+  services:
+   mysql:
+     image: mysql:8.4
+     container_name: some-mysql
+     environment:
+       MYSQL_ROOT_PASSWORD: <your_root_pass>
+       MYSQL_DATABASE: social
+       MYSQL_ROOT_HOST: "%"
+     ports:
+       - "3306:3306"
+  ```
+  - run `docker compose up -d`
 - to connect to database, we will use URL database 'mysql://root:<your_root_pass>@localhost:3306/social'
 
 # dotenv
