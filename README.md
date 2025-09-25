@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Setup Database
 - Use 'Docker'
 - Create database container via MySQL
@@ -32,3 +33,7 @@ SECRET="f631883674df3e73d0aeafb5b316d29efaa25447c9bceffd8b1727fd15a61c99"
 - backend: run 'npx prisma db push
 ' then 'npm start'
 - frontend: run 'npm run dev'
+=======
+# For Bas n his friend
+- I will show my POWER of YEEEZZZY Vibe coding
+>>>>>>> 4c15a051bdde0b854e7dda624bbbf0e8cac18917
